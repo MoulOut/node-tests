@@ -6,15 +6,15 @@ class Cart {
     this.total = null;
   }
 
-  adiciona(item) {
+  add(item) {
     this.items.push(item);
   }
 
-  adicionaFrete(value) {
+  addFrete(value) {
     this.frete = value;
   }
 
-  calculaSubtotal() {
+  calculateTotal() {
     this.subtotal = this.items.reduce(
       (acum, item) => acum + item.getTotalItemValue(),
       0
@@ -22,12 +22,12 @@ class Cart {
     return this.subtotal + this.frete;
   }
 
-  finalizaCompra() {
+  finalizeOrder() {
     if (this.items.length === 0) {
       throw new Error('Empty Cart.');
     }
 
-    this.total = this.calculaTotal();
+    this.total = this.calculateTotal();
 
     return {
       subtotal: this.subtotal,
